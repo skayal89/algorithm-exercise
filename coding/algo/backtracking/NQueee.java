@@ -1,4 +1,4 @@
-package coding.ds.array;
+package coding.algo.backtracking;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,11 +8,11 @@ import java.util.Arrays;
 public class NQueee {
     @Data
     @AllArgsConstructor
-    static class Position{
+    private static class Position{
         int row,col;
     }
 
-    void nqueen(int n){
+    public void nqueen(int n){
         /*
         position[i] is the position of ith queen
          */
@@ -25,10 +25,10 @@ public class NQueee {
         }
     }
 
-    boolean nQueenUtil(Position p[], int n, int queen){
+    private boolean nQueenUtil(Position p[], int n, int queen){
         if(queen==n)    return true;
         for (int i=0;i<n;i++){
-            if(isSafe(p, n, queen, i)){
+            if(isSafe(p, queen, i)){
                 p[queen]=new Position(queen,i);
                 if(nQueenUtil(p, n, queen+1)){
                     return true;
@@ -38,7 +38,7 @@ public class NQueee {
         return false;
     }
 
-    boolean isSafe(Position[] p, int n, int q, int i){
+    private boolean isSafe(Position[] p, int q, int i){
         for (int j = 0; j < q; j++) {
             if(i==p[j].col || q+i==p[j].row+p[j].col || q-i==p[j].row-p[j].col){
                 return false;
