@@ -4,11 +4,10 @@ import coding.util.ArrayUtil;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
 
-import java.util.Arrays;
 import java.util.PriorityQueue;
 
 // https://www.geeksforgeeks.org/minimum-cost-path-left-right-bottom-moves-allowed/
-public class MinimumCostPath {
+public class MinCostPath {
     @AllArgsConstructor
     static class Graph{
         int V;
@@ -95,6 +94,6 @@ public class MinimumCostPath {
                 {88, 124, 41, 20, 140},
                 {99, 32, 111, 41, 20}
         };
-        System.out.println(new MinimumCostPath().minCost(grid,5,5));
+        System.out.println(new MinCostPath().minCost(grid,5,5));
     }
 }

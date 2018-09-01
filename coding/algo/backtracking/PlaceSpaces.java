@@ -1,8 +1,5 @@
 package coding.algo.backtracking;
 
-
-import java.util.Arrays;
-
 public class PlaceSpaces {
     void insertSpace(String s, int n){
         char[] ch=new char[2*n];
