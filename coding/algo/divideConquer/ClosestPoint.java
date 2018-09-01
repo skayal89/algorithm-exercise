@@ -37,7 +37,7 @@ public class ClosestPoint {
 
         int mid=(low+high)/2; // would always be use for px[mid]. Will encounter OutOfBounds if we use py[mid].
         Point pyl[]=new Point[mid-low+1]; // need to be careful for the size. we should not use n to calculate the size
-        Point pyr[]=new Point[high-mid];
+        Point pyr[]=new Point[high-mid]; // let's consider an example to calculate the size low = 5, high = 8 then mid = 6
         int li=0, ri=0; // pyl and pyr should use different indexes
         for (int i=0;i<n;i++){ // need to consider px[mid] while populating pyl and pyr
             if(py[i].x<=px[mid].x)   pyl[li++]=py[i];
