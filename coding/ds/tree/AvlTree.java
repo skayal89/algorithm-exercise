@@ -31,22 +31,23 @@ public class AvlTree {
         else if(key>root.data){
             root.right=insert(root.right,key);
         }
+        // above insertion part remains same as standard BST insertion
         root.height=1+Math.max(h(root.left),h(root.right));
         int bf=h(root.left)-h(root.right);
         if(bf>1){
-            if(h(root.left.left)>=h(root.left.right)){
+            if(h(root.left.left)>=h(root.left.right)){ // LL case
                 root=rotateRight(root);
             }
-            else {
+            else { // LR case
                 root.left=rotateLeft(root.left);
                 root=rotateRight(root);
             }
         }
         if(bf<-1){
-            if(h(root.right.left)<=h(root.right.right)){
+            if(h(root.right.left)<=h(root.right.right)){ // RR case
                 root=rotateLeft(root);
             }
-            else {
+            else { // RL case
                 root.right=rotateRight(root.right);
                 root=rotateLeft(root);
             }
@@ -54,7 +55,7 @@ public class AvlTree {
         return root;
     }
 
-    Node delete(Node root, int key){
+    Node delete(Node root, int key){ // same as insertion
         if(root==null)  return null;
         if(key<root.data){
             root.left=delete(root.left,key);

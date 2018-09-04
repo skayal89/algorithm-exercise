@@ -1,4 +1,4 @@
-package coding.ds.segment_tree;
+package coding.ds.rmq;
 
 import coding.algo.math.NextPowerOf2;
 import coding.util.ArrayUtil;
