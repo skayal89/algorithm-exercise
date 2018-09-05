@@ -13,11 +13,11 @@ public class SqrtDecomposition {
     void decomposeSum(int a[], int n){
         r = (int) Math.ceil(Math.sqrt(n));
         d=new int[r];
-        int j=-1;
+        int j=-1; // used to fill the block
 
         for (int i = 0; i < n; i++) {
             if(i%r == 0){
-                j++;
+                j++; // new block started, if current index of input array is divisible by block size
             }
             d[j]+=a[i];
         }
@@ -27,13 +27,13 @@ public class SqrtDecomposition {
         int res=0;
         int i=0;
         int n=a.length;
-        for (i=from;i%r != 0 && i <= to && i<n; i++) {
+        for (i=from;i%r != 0 && i <= to && i<n; i++) { // from is started from middle of a block
             res += a[i];
         }
-        for (;i%r==0 && i<=to && (to-i)>=r && i<n;i+=r){
-            res+=d[i/r];
+        for (;i%r == 0 && i <= to && (to-i) >= r && i<n;i+=r){ // (to-i) >= r we can consider the whole block. Checkout for whiteboard pic
+            res+=d[i/r];    // i%r == 0 starting of a block
         }
-        for (;i<=to && i<n;i++){
+        for (;i<=to && i<n;i++){ // to is ending on a middle of a block
             res+=a[i];
         }
         return res;
