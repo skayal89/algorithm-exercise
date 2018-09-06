@@ -1,4 +1,4 @@
-package coding.ds.graph;
+package coding.algo.graph;
 
 import java.util.LinkedList;
 import java.util.List;
