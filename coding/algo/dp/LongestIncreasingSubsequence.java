@@ -25,8 +25,8 @@ public class LongestIncreasingSubsequence {
                 }
                 else {
                     int j=binarySearchCeil(a, t, len+1, a[i]);
-                    t[j]=i;
-                    p[j]=t[j-1];
+                    t[j]=i; // binarySearchCeil will always return a valid index because we have already checked in
+                    p[j]=t[j-1]; // prev condition that the target is not lesser the a[t[0]] and not greater than a[t[len]]
                 }
             }
         }
