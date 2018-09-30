@@ -9,20 +9,20 @@ public class CombinationalSum {
         sumUtil(a, 0, sum, r, 0);
     }
 
-    void sumUtil(int a[], int i, int sum, int r[], int j)
+    void sumUtil(int a[], int i, int sum, int results[], int j)
     {
         if(sum<0)   return;
         if(sum==0){
-            for (int k = 0; k < j; k++) {
-                System.out.print(r[k] + " ");
+            for (int k = 0; k < j; k++) { // print the result & return
+                System.out.print(results[k] + " ");
             }
             System.out.println();
             return;
         }
-        if(i<a.length && j<r.length) {
-            r[j] = a[i];
-            sumUtil(a, i, sum - a[i], r, j + 1);
-            sumUtil(a, i + 1, sum, r, j);
+        if(i<a.length && j<results.length) {
+            results[j] = a[i];
+            sumUtil(a, i, sum - a[i], results, j + 1); // include the element
+            sumUtil(a, i + 1, sum, results, j); // exclude the element
         }
     }
 
