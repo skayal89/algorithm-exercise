@@ -26,6 +26,7 @@ public class RemoveDuplicates {
     public static void main(String[] args) {
         System.out.println(removeDuplicates("geeksforgeeks"));
         System.out.println(removeDuplicates("HappyNewYear"));
+        System.out.println(removeDuplicates("azxxzy"));
 
     }
 }
