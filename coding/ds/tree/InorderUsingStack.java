@@ -5,53 +5,47 @@ import coding.coding.model.TreeNode;
 import java.util.Stack;
 
 public class InorderUsingStack {
-    public static void inorder(TreeNode t){
+
+    static void inorder3(TreeNode t){
+        if(t==null) return;
         TreeNode curr=t;
         Stack<TreeNode> s=new Stack<TreeNode>();
-        while(curr!=null){
-            while (curr.left!=null){
-                s.push(curr);
+        s.push(curr);
+        while (!s.empty()){
+            while (curr!=null && curr.left!=null){
+                s.push(curr.left);
                 curr=curr.left;
             }
-            System.out.println(curr.data);
-            if(curr.right!=null){
-                curr=curr.right;
-            }
-            else {
-                if(s.empty())   return;
-                while (!s.empty()){
-                    TreeNode temp=s.pop();
-                    System.out.println(temp.data);
-                    if(s.empty() && temp.right==null)  return;
-                    if(temp.right!=null){
-                        curr=temp.right;
-                        break;
-                    }
+            while (!s.empty()){
+                TreeNode temp=s.pop();
+                System.out.println(temp.data);
+                if(temp.right!=null){
+                    curr=temp.right;
+                    s.push(curr);
+                    break;
                 }
             }
         }
     }
 
-    public static void inorder2(TreeNode t){
-        TreeNode curr=t;
+    static void postOrder(TreeNode root)
+    {
         Stack<TreeNode> s=new Stack<TreeNode>();
+        TreeNode curr=root, p=null;
         while(curr!=null){
-            s.push(curr);
-            if(curr.left!=null){
+            while(curr!=null){
+                s.push(curr);
                 curr=curr.left;
             }
-            else {
-                TreeNode x=s.pop();
-                System.out.println(x.data);
-                while (!s.empty() && curr.right==null){
-                    curr=s.pop();
-                    System.out.println(curr.data);
+            while(!s.empty()){
+                TreeNode t=s.peek();
+                if((t.right==null) || (p!=null && t.right.data==p.data)){
+                    p=s.pop();
+                    System.out.print(p.data+" ");
                 }
-                if(s.empty() && curr.right==null){
+                else {
+                    curr=t.right;
                     break;
-                }
-                if (curr.right!=null){
-                    curr=curr.right;
                 }
             }
         }
@@ -66,6 +60,8 @@ public class InorderUsingStack {
         t.left.right.left=new TreeNode(17);
         t.right.left=new TreeNode(8);
         t.right.right=new TreeNode(13);
-        inorder2(t);
+        //inorder2(t);
+        //inorder3(t);
+        postOrder(t);
     }
 }

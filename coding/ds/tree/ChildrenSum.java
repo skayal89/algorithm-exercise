@@ -46,6 +46,6 @@ public class ChildrenSum {
 //        t.left=new TreeNode(20);
 //        t.left.left=new TreeNode(15);
 
-        InorderUsingStack.inorder2(convert(t));
+        InorderUsingStack.inorder3(convert(t));
     }
 }

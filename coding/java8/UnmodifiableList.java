@@ -16,8 +16,9 @@ public class UnmodifiableList {
                                   implements List<E> {
          */
         List<Integer> lu=Collections.unmodifiableList(l); // lu can't be structurally modifiable (add, remove are unsupported)
-        l.add(22); // element will also be added to unmodified list.
+        l.add(22); // element will also be added to unmodified list by adding to original list.
         System.out.println(l);
         System.out.println(lu);
+        lu.add(25); // can't be added
     }
 }
