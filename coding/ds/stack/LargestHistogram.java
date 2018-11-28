@@ -29,7 +29,7 @@ public class LargestHistogram {
     }
 
     public static void main(String[] args) {
-        int[] a=new int[]{3,1};
+        int[] a=new int[]{6, 2, 5, 4, 5, 1, 6}; // answer = 12
         System.out.println(largestArea(a));
     }
 }
