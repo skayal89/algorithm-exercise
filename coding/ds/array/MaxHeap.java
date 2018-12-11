@@ -96,10 +96,6 @@ public class MaxHeap {
     }
 
     void printHeap(){
-//        for(int i=0;i<size;i++){
-//            System.out.print(a[i]+" ");
-//        }
-//        System.out.println();
         System.out.println(Arrays.toString(a));
     }
 

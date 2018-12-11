@@ -9,7 +9,7 @@ public class QuickSort {
 
     static void sort(int a[], int low, int high){
         if(low<high){
-            int p= partition(a, low, high); System.out.println(p+" "+Arrays.toString(a));
+            int p= partition2(a, low, high); System.out.println(p+" "+Arrays.toString(a));
             sort(a,low,p-1);
             sort(a,p+1,high);
         }
@@ -29,6 +29,40 @@ public class QuickSort {
                 int t = a[l];
                 a[l] = a[h];
                 a[h] = t;
+            }
+        }
+        int t=a[pivot];
+        a[pivot]=a[h];
+        a[h]=t;
+        return h;
+    }
+
+    static int partition1(int a[], int low, int high){
+        int pivot=high;
+        int l=low;
+        for (int j=low;j<high;j++){
+            if(a[j]<a[pivot]){
+                int temp=a[j];
+                a[j]=a[l];
+                a[l]=temp;
+                l++;
+            }
+        }
+        int t=a[pivot];
+        a[pivot]=a[l];
+        a[l]=t;
+        return l;
+    }
+
+    static int partition2(int a[], int low, int high){
+        int pivot=low;
+        int h=high;
+        for (int j=high;j>low;j--){
+            if(a[j]>a[pivot]){
+                int temp=a[j];
+                a[j]=a[h];
+                a[h]=temp;
+                h--;
             }
         }
         int t=a[pivot];

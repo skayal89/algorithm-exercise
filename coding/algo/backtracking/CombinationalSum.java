@@ -46,9 +46,6 @@ public class CombinationalSum {
 
 
     public static void main(String[] args) {
-        int x[]=new int[]{1,2,2,2,3,4,4,4,4,4,5,5};
-        x=new CombinationalSum().removeDuplicates(x);
-        ArrayUtil.print(x);
         int a[]=new int[]{4,6,2,8};
         int sum=8;
         int b[]=new int[]{7,2,6,5};
