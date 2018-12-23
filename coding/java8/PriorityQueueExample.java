@@ -9,7 +9,7 @@ import java.util.Queue;
 
 public class PriorityQueueExample {
     public static void main(String[] args) {
-        // Java 8 way to define Comparator
+        // Java 8 way to define Comparator - Max Heap
         Queue<Key> priorityQueue=new PriorityQueue<>((k1, k2)->k2.freq-k1.freq);
 
         priorityQueue.add(new Key('a',3));

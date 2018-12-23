@@ -7,6 +7,9 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
+/*
+ https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/
+ */
 public class AugmentedStack {
 
     DoublyLinkedListNode head, mid;

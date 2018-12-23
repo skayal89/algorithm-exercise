@@ -2,6 +2,9 @@ package coding.ds.rmq;
 
 import java.util.Arrays;
 
+/*
+ https://www.youtube.com/watch?v=gWbDocYhwDA
+ */
 public class SqrtDecomposition {
     int[] d;
     int r;

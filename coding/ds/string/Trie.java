@@ -53,11 +53,34 @@ public class Trie {
         return false;
     }
 
+    void delete(String word){
+        delete(root, word, 0);
+    }
+
+    private boolean delete(Node current, String word, int index){
+        if(index==word.length()){
+            if(!current.isWord){
+                return false;
+            }
+            current.isWord=false;
+            return current.child.size()==0;
+        }
+        char ch = word.charAt(index);
+        Node temp = current.child.get(ch);
+        if(temp==null)  return false;
+        boolean shouldDeleteCurrentNode = delete(temp, word, index+1);
+        if(shouldDeleteCurrentNode){
+            current.child.remove(ch);
+            return current.child.size()==0;
+        }
+        return false;
+    }
+
     List<String> suggest(String s){
         return complete(s);
     }
 
-    List<String> complete(String s){
+    private List<String> complete(String s){
         List<String> res=new ArrayList<>();
         Node p=root;
         StringBuilder sb=new StringBuilder();
@@ -77,7 +100,7 @@ public class Trie {
         return res;
     }
 
-    List<String> dfs(Node q, List<String> res, StringBuilder sb, int j){
+    private List<String> dfs(Node q, List<String> res, StringBuilder sb, int j){
         if(q.isWord)    res.add(sb.toString());
         for(Map.Entry<Character,Node> e : q.child.entrySet()){
             sb.insert(j,e.getKey());
@@ -102,7 +125,14 @@ public class Trie {
         t.insert("bak");
         System.out.println(t.toString());
         System.out.println(t.search("abcd"));
-        System.out.println(t.search("abc"));
+        System.out.println(t.search("aman"));
+        t.delete("aman");
+        System.out.println(t.search("aman"));
+        System.out.println(t.toString());
+        t.delete("amar");
+        System.out.println(t.search("amar"));
+        System.out.println(t.toString());
+
         while(true) {
             System.out.println(t.suggest(new Scanner(System.in).next()));
         }
