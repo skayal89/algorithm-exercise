@@ -11,10 +11,11 @@ public class KMPPatternSearching {
         int j=0,i=1;
         while(i<n){
             if(j==i)    j=0;
-            if(j<i && s.charAt(i)==s.charAt(j)){
-                p[i++]=++j;
+            if(s.charAt(i)==s.charAt(j)){
+                p[i++]=j+1;
+                j++;
             }
-            else if(j<i && s.charAt(i)!=s.charAt(j)){
+            else{
                 if(j>0){
                     j=p[j-1];
                 }

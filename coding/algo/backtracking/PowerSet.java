@@ -14,9 +14,9 @@ public class PowerSet {
             printSubset(res,j);
             return;
         }
-        util(a,n,i+1,res,j);
+        util(a,n,i+1,res,j); // Exclude the current element
         res[j]=a[i];
-        util(a, n, i+1, res, j+1);
+        util(a, n, i+1, res, j+1); // Include the current element
     }
 
     void printSubset(int a[], int n){

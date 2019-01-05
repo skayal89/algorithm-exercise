@@ -6,24 +6,18 @@ import java.util.Stack;
 
 public class InorderUsingStack {
 
-    static void inorder3(TreeNode t){
-        if(t==null) return;
-        TreeNode curr=t;
+    static void inorder(TreeNode t){
         Stack<TreeNode> s=new Stack<TreeNode>();
-        s.push(curr);
-        while (!s.empty()){
-            while (curr!=null && curr.left!=null){
-                s.push(curr.left);
+        TreeNode curr=t;
+        while (curr!=null){
+            while (curr!=null){
+                s.push(curr);
                 curr=curr.left;
             }
-            while (!s.empty()){
-                TreeNode temp=s.pop();
-                System.out.println(temp.data);
-                if(temp.right!=null){
-                    curr=temp.right;
-                    s.push(curr);
-                    break;
-                }
+            while (!s.empty() && curr==null){
+                TreeNode temp = s.pop();
+                System.out.println(temp.data+" ");
+                curr=temp.right;
             }
         }
     }
@@ -61,7 +55,7 @@ public class InorderUsingStack {
         t.right.left=new TreeNode(8);
         t.right.right=new TreeNode(13);
         //inorder2(t);
-        //inorder3(t);
-        postOrder(t);
+        inorder(t);
+        //postOrder(t);
     }
 }

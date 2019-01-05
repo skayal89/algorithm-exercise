@@ -25,6 +25,12 @@ public class MinRangeQuery {
     }
 
     static int min(int a[], int fromIndex, int toIndex){
+        // Check for erroneous input values
+        if (fromIndex < 0 || toIndex > a.length - 1 || fromIndex > toIndex)
+        {
+            System.err.println("Invalid input");
+            return -1;
+        }
         return getMin(a, buildSegmentTree(a), fromIndex, toIndex, 0, a.length-1, 0);
     }
 
