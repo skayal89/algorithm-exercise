@@ -1,4 +1,4 @@
-package coding.java8;
+package coding.java8.multithreading;
 
 /*
     https://www.geeksforgeeks.org/deadlock-in-java-multithreading/

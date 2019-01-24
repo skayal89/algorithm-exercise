@@ -11,7 +11,7 @@ public class ListCloneTest {
         Integer a[]=new Integer[]{2,5,4,1,7,9};
         ArrayList<Integer> integerArrayList=new ArrayList<>(Arrays.asList(a));
         ArrayList<Integer> integerArrayListCopy= (ArrayList<Integer>) integerArrayList.clone(); // Deep Copy
-        integerArrayListCopy.set(0,9);
+        integerArrayListCopy.set(0,9); // will not affect integerArrayList
         System.out.println(integerArrayList);
         System.out.println(integerArrayListCopy);
         ArrayList<Integer> integerArrayList1=new ArrayList<>(integerArrayList); // deep copy in case of wrapper class
