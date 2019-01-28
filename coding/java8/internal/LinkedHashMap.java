@@ -1,7 +1,6 @@
-package coding.ds.liknedlist;
+package coding.java8.internal;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LinkedHashMap<K,V> {
