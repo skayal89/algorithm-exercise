@@ -1,4 +1,4 @@
-package coding.ds.rmq;
+package coding.algo.rmq;
 
 import coding.algo.math.NextPowerOf2;
 import coding.util.ArrayUtil;

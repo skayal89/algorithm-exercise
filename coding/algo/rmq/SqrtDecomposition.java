@@ -1,4 +1,4 @@
-package coding.ds.rmq;
+package coding.algo.rmq;
 
 import java.util.Arrays;
 
