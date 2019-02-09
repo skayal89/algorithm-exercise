@@ -5,9 +5,11 @@ import coding.util.ArrayUtil;
 
 public class MinRangeQuery {
 
-    int s[];
+    int s[]; // segment tree
+    int a[]; // input array
 
     MinRangeQuery(int a[]){
+        this.a=a;
         buildSegmentTree(a);
         ArrayUtil.print(s);
     }
@@ -29,7 +31,7 @@ public class MinRangeQuery {
         s[pos]=Math.min(s[2*pos+1],s[2*pos+2]);
     }
 
-    public int min(int a[], int fromIndex, int toIndex){
+    public int min(int fromIndex, int toIndex){
         // Check for erroneous input values
         if (fromIndex < 0 || toIndex > a.length - 1 || fromIndex > toIndex)
         {
@@ -51,6 +53,6 @@ public class MinRangeQuery {
     public static void main(String[] args) {
         int a[]=new int[]{-1,2,4,6,3,0};
         MinRangeQuery rangeQuery = new MinRangeQuery(a);
-        System.out.println(rangeQuery.min(a, 2,4));
+        System.out.println(rangeQuery.min(2,4));
     }
 }
