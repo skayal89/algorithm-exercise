@@ -3,7 +3,9 @@ package coding.ds.tree;
 import coding.coding.model.TreeNode;
 
 /*
-size of largest subtree which is a perfect binary tree
+ * size of largest subtree which is a perfect binary tree
+ * a binary tree is perfect iff a node has 0 or 2 childs and
+ * all leaves are at same level
  */
 public class LargestPerfectBinaryTree {
 
