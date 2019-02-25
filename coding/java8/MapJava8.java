@@ -19,6 +19,11 @@ public class MapJava8 {
         }
         */
 
-
+        //System.out.println(test());
     }
+
+//    static int test(){
+//        int a[]=new int[10];
+//        return a[0]=2;
+//    }
 }
