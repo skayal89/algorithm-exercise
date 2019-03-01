@@ -10,6 +10,7 @@ public class CountPalindromeSubstring {
         HashSet<String> set=new HashSet<>();
 
         for (int i = 0; i < n; i++) {
+            // Even palindrome
             low=i;
             high=i+1;
             while (low>=0 && high<n && s.charAt(low)==s.charAt(high)){
@@ -21,6 +22,7 @@ public class CountPalindromeSubstring {
                 high++;
             }
 
+            // Odd palindrome
             low=i-1;
             high=i+1;
             while (low>=0 && high<n && s.charAt(low)==s.charAt(high)){
@@ -42,7 +44,7 @@ public class CountPalindromeSubstring {
         HashSet<String> set=new HashSet<>();
 
         for (int i = 0; i < n; i++) {
-            set.add(s.substring(i,i+1));
+            set.add(s.substring(i,i+1)); // single char is always a palindrome
 
             low=i;
             high=i+1;
