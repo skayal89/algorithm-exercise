@@ -2,8 +2,6 @@ package coding.ds.tree;
 
 import coding.coding.model.TreeNode;
 
-import java.util.Arrays;
-
 public class ConstructTree {
 
     private static TreeNode constructFromPreIn(int[] in,int[] pre, Index index, int low, int high){
@@ -46,6 +44,6 @@ public class ConstructTree {
         int in[]=new int[]{2,9,6,10,7,3,21};
         int pre[]=new int[]{7,9,2,10,6,3,21};
         TreeNode t1=constructFromPreIn(in,pre,new Index(),0,in.length-1);
-        InorderUsingStack.inorder(t1);
+        IterativeInorderPostorder.inorder(t1);
     }
 }

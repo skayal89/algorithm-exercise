@@ -4,7 +4,7 @@ import coding.coding.model.TreeNode;
 
 import java.util.Stack;
 
-public class InorderUsingStack {
+public class IterativeInorderPostorder {
 
     static void inorder(TreeNode t){
         Stack<TreeNode> s=new Stack<TreeNode>();
