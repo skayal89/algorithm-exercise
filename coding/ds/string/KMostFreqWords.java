@@ -1,6 +1,5 @@
-package coding.ds.array;
+package coding.ds.string;
 
-import coding.ds.string.Trie;
 import lombok.AllArgsConstructor;
 
 import java.util.Arrays;

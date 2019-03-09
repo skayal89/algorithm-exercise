@@ -12,7 +12,8 @@ public class KthSmallestElementQSort {
     }
 
     static int sort(int a[], int low, int high, int k){
-        if(low<=high){
+        // If k is smaller than number of elements in array - without this check is also fine
+        if(low<=high && k<=(high-low+1)){
             int p=partition(a, low, high);
             System.out.println(p+" "+Arrays.toString(a));
             if(p==k-1)  {
@@ -24,7 +25,7 @@ public class KthSmallestElementQSort {
             else
                 return sort(a,p+1,high,k);
         }
-        return -1;
+        return -1; // any invalid input can be returned
     }
 
     static int partition(int a[], int low, int high){
