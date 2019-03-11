@@ -42,8 +42,8 @@ public class MinRangeQuery {
     }
 
     private int getMin(int a[], int qlow, int qhigh, int low, int high, int s[], int pos){
-        if(qhigh<low || qlow>high)  return Integer.MAX_VALUE;
-        if(qlow<=low && qhigh>=high)    return s[pos];
+        if(qhigh<low || qlow>high)  return Integer.MAX_VALUE; // No Overlap
+        if(qlow<=low && qhigh>=high)    return s[pos]; // Total Overlap
         int mid=(low+high)/2;
         int left=getMin(a, qlow, qhigh, low, mid, s, 2*pos+1);
         int right=getMin(a, qlow, qhigh, mid+1, high, s, 2*pos+2);

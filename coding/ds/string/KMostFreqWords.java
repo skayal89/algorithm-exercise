@@ -129,6 +129,7 @@ public class KMostFreqWords {
 
         TrieNode root;
         MinHeap minHeap;
+
         TrieNode(int k){
             this.root=new TrieNode();
             minHeap=new MinHeap(k, new Comparator<HeapNode>() {

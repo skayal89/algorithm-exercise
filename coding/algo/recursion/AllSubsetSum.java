@@ -1,7 +1,7 @@
 package coding.algo.recursion;
 /*
-https://www.geeksforgeeks.org/print-sums-subsets-given-set/
-Print sums of all subsets of a given set
+ * https://www.geeksforgeeks.org/print-sums-subsets-given-set/
+ * Print sums of all subsets of a given set
  */
 public class AllSubsetSum {
 
