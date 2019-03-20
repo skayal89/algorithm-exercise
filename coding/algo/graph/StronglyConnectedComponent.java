@@ -4,9 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+/*
+ * https://www.geeksforgeeks.org/tarjan-algorithm-find-strongly-connected-components/
+ */
 public class StronglyConnectedComponent {
 
-    private static int time=1;
+    private static int time;
 
     static class Graph{
         int V;
@@ -27,6 +30,7 @@ public class StronglyConnectedComponent {
     }
 
     void dfs(Graph g){
+        time = 1;
         boolean visited[]=new boolean[g.V];
         boolean stackMember[]=new boolean[g.V];
         Stack<Integer> s=new Stack<>();
@@ -45,21 +49,24 @@ public class StronglyConnectedComponent {
         s.push(u);
 
         List<Integer> adjacent=g.adj[u];
-        for (Integer v : adjacent){
-            if(!visited[v]){
+        for (Integer v : adjacent){ // v is the current adjacent of u
+            if(!visited[v]){ // If v is not visited yet, then recur for it
                 dfsUtil(g, v, visited, low, disc, s, stackMember);
-                // done exploring the child v, so low[v] must be contained the disc value of top most ancestor
+                // done exploring the child v, Check if the subtree rooted with 'v' has a connection to one of the ancestors of 'u'
+                // if 'v' has a connection to one of the ancestors of 'u', then low[v] must be contained the disc value of top
+                // most ancestor which is reachable from v
                 low[u]=Math.min(low[u],low[v]); // tree edge
             }
             else { // back edge or cross edge found from u to v, as v is already visited
                 if(stackMember[v]) { // if v is in stack then it's back edge, otherwise it's a cross edge
+                    // Update low value of 'u' only if 'v' is still in stack (i.e. it's a back edge, not cross edge)
                     low[u] = Math.min(low[u], disc[v]);
                 }
             }
         }
 
         // print a strongly connected component
-        if(low[u]==disc[u]) {
+        if(low[u]==disc[u]) { // if low and disc value is same for node, that means it's a SCC
             while (!s.empty() && s.peek()!=u) {
                 int x = s.pop();
                 stackMember[x] = false;

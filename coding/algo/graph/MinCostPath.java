@@ -5,8 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.ToString;
 
 import java.util.PriorityQueue;
+/*
+ * https://www.geeksforgeeks.org/minimum-cost-path-left-right-bottom-moves-allowed/
+ * we have to treat this as a weighted directed graph, so we need to apply
+ * Djkstra's algorithm to find to cost of shortest path.
+ *
+ * If the graph is unweighted then it can also be solve using BFS.
+ * Checkout the similar problem
+ * https://www.geeksforgeeks.org/shortest-path-in-a-binary-maze/
+ * https://www.geeksforgeeks.org/shortest-path-unweighted-graph/
+ *
+ */
 
-// https://www.geeksforgeeks.org/minimum-cost-path-left-right-bottom-moves-allowed/
 public class MinCostPath {
     @AllArgsConstructor
     static class Graph{

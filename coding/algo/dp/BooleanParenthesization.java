@@ -8,7 +8,113 @@ import coding.util.ArrayUtil;
  * Amazon, Microsoft, LinkedIn
  */
 public class BooleanParenthesization {
-    public static int countWaysOfParenthesization(char[] symbols, char[] operators){
+
+    public static int countWaysOfParenthesizationRecursion(char[] symbols, char[] operators){
+        return countWaysOfParenthesizationRecursion(symbols, operators,0,symbols.length-1,true);
+    }
+
+    public static int countWaysOfParenthesizationRecursion(char[] symbols, char[] operators, int low, int high, boolean isTrue){
+        if(low > high)    return 0;
+        if(low==high){
+            if(isTrue){
+                return symbols[low]=='T' ? 1 : 0;
+            }
+            else{
+                return symbols[low]=='F' ? 1 : 0;
+            }
+        }
+
+        int countWays = 0;
+        for (int k = low; k < high; k++) {
+            int leftTrue = countWaysOfParenthesizationRecursion(symbols, operators,low,k,true);
+            int leftFalse = countWaysOfParenthesizationRecursion(symbols, operators,low,k,false);
+            int rightTrue = countWaysOfParenthesizationRecursion(symbols, operators,k+1,high,true);
+            int rightFalse = countWaysOfParenthesizationRecursion(symbols, operators,k+1,high,false);
+
+            int total_ik = leftTrue + leftFalse;
+            int total_kj = rightTrue + rightFalse;
+
+            if(operators[k]=='&'){
+                if(isTrue)
+                    countWays += leftTrue * rightTrue;
+                else
+                    countWays += (total_ik*total_kj - leftTrue * rightTrue);
+            }
+            else if(operators[k]=='|'){
+                if(isTrue)
+                    countWays += (total_ik*total_kj - leftFalse*rightFalse);
+                else
+                    countWays += leftFalse*rightFalse;
+            }
+            else if(operators[k]=='^'){
+                if(isTrue)
+                    countWays += leftTrue*rightFalse + leftFalse*rightTrue;
+                else
+                    countWays += leftTrue*rightTrue + leftFalse*rightFalse;
+            }
+        }
+        return countWays;
+    }
+
+    public static int countWaysOfParenthesizationTopDownDP(char[] symbols, char[] operators){
+        int n = symbols.length;
+        int dp[][][] = new int[n][n][2];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k<2; k++){
+                    dp[i][j][k] = -1;
+                }
+            }
+        }
+        return countWaysOfParenthesizationTopDownDP(symbols, operators,dp,0,n-1,1);
+    }
+
+    public static int countWaysOfParenthesizationTopDownDP(char[] symbols, char[] operators, int dp[][][], int low, int high, int isTrue){
+        if(low > high)    return 0;
+        if(low==high){
+            if(isTrue == 1){
+                return symbols[low]=='T' ? 1 : 0;
+            }
+            else{
+                return symbols[low]=='F' ? 1 : 0;
+            }
+        }
+
+        if(dp[low][high][isTrue]!=-1)   return dp[low][high][isTrue];
+
+        int countWays = 0;
+        for (int k = low; k < high; k++) {
+            int leftTrue = countWaysOfParenthesizationRecursion(symbols, operators,low,k,true);
+            int leftFalse = countWaysOfParenthesizationRecursion(symbols, operators,low,k,false);
+            int rightTrue = countWaysOfParenthesizationRecursion(symbols, operators,k+1,high,true);
+            int rightFalse = countWaysOfParenthesizationRecursion(symbols, operators,k+1,high,false);
+
+            int total_ik = leftTrue + leftFalse;
+            int total_kj = rightTrue + rightFalse;
+
+            if(operators[k]=='&'){
+                if(isTrue == 1)
+                    countWays += leftTrue * rightTrue;
+                else
+                    countWays += (total_ik*total_kj - leftTrue * rightTrue);
+            }
+            else if(operators[k]=='|'){
+                if(isTrue == 1)
+                    countWays += (total_ik*total_kj - leftFalse*rightFalse);
+                else
+                    countWays += leftFalse*rightFalse;
+            }
+            else if(operators[k]=='^'){
+                if(isTrue == 1)
+                    countWays += leftTrue*rightFalse + leftFalse*rightTrue;
+                else
+                    countWays += leftTrue*rightTrue + leftFalse*rightFalse;
+            }
+        }
+        return (dp[low][high][isTrue] = countWays);
+    }
+
+    public static int countWaysOfParenthesizationBottomUpDP(char[] symbols, char[] operators){
         int n=symbols.length;
 
         int[][] T=new int[n][n];
@@ -41,10 +147,10 @@ public class BooleanParenthesization {
                     }
                 }
             }
-            System.out.println();
-            ArrayUtil.print(T);
-            System.out.println();
-            ArrayUtil.print(F);
+//            System.out.println();
+//            ArrayUtil.print(T);
+//            System.out.println();
+//            ArrayUtil.print(F);
         }
 
         return T[0][n-1];
@@ -54,6 +160,8 @@ public class BooleanParenthesization {
         char symb[]=new char[]{'T','T','F','T'};
         char op[]=new char[]{'|','&','^'};
 
-        System.out.println(countWaysOfParenthesization(symb,op));
+        System.out.println(countWaysOfParenthesizationRecursion(symb,op));
+        System.out.println(countWaysOfParenthesizationTopDownDP(symb,op));
+        System.out.println(countWaysOfParenthesizationBottomUpDP(symb,op));
     }
 }
