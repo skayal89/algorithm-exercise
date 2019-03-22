@@ -1,4 +1,4 @@
-package coding.ds.array;
+package coding.ds.array.binarysearch;
 
 import java.util.Arrays;
 
