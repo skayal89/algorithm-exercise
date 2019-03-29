@@ -2,6 +2,10 @@ package coding.algo.divideConquer;
 
 import java.util.Arrays;
 
+/*
+ * https://youtu.be/7ScaPk5DSwM
+ * https://www.geeksforgeeks.org/counting-inversions/
+ */
 public class CountInversion {
     int mergeSort(int a[], int l, int h){
         if(l<h){

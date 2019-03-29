@@ -4,7 +4,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Stack;
 
-// Graham's Scan implementation
+/*
+ * Graham's Scan implementation
+ * https://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/
+ */
 public class ConvexHull {
 
     void grahamScan(Point[] p, int n){
