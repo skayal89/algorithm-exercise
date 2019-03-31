@@ -15,6 +15,13 @@ public class BinaryToDecimal {
         return res;
     }
 
+    /*
+     * 1*2^3 + 1*2^2 + 0*2^1 + 1*2^0
+     * = 2 (1*2^2 + 1*2^1 + 0*2^0) + 1
+     * = 2 (2 (1*2^1 + 1*2^0) + 0) + 1
+     * = 2 (2 (2*(1) + 1) + 0) + 1
+     *            ^ starting position = 2 * 0 + 1 = 1
+     */
     static int toDecimal2(String bin){
         int res = 0;
 
@@ -33,8 +40,10 @@ public class BinaryToDecimal {
     public static void main(String[] args) {
         System.out.println(toDecimal("11010100"));
         System.out.println(convertToDecimal("11010100"));
+        System.out.println(convertToDecimal("1101"));
 
         System.out.println();
         System.out.println(toDecimal2("11010100"));
+        System.out.println(toDecimal2("1101"));
     }
 }

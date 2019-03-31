@@ -3,6 +3,7 @@ package coding.ds.tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// wrong code in geeksforgeeks
 public class TernaryExpToBinaryTree {
 
     class Node
