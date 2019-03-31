@@ -39,5 +39,6 @@ public class StringPermutationLexSorted {
 
     public static void main(String[] args) {
         new StringPermutationLexSorted().lexSortedPermutation("aabc");
+        new StringPermutationLexSorted().lexSortedPermutation("babbac");
     }
 }

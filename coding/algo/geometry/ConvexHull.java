@@ -20,7 +20,7 @@ public class ConvexHull {
             }
         }
 
-        Arrays.sort(p, 1, n, pointComparator(p[0], n)); // sort from index 1 onwards
+        Arrays.sort(p, 1, n, new PointComparator(p[0])); // sort from index 1 onwards
         System.out.println(Arrays.toString(p));
 
         // remove the point which has the same polar angle with p0
@@ -61,17 +61,25 @@ public class ConvexHull {
         }
     }
 
-    Comparator<Point> pointComparator(Point p0, int n){
-        return new Comparator<Point>() {
-            @Override
-            public int compare(Point p1, Point p2) {
-                Orientation orientation=getOrientation(p0, p1, p2); // get the orientation of p0-p1-p2
-                if(orientation==Orientation.COLINEAR){ // If two or more points make same angle with p0, keep the farthest point at the end
-                    return distSquare(p0,p2) >= distSquare(p0,p1) ? -1 : 1; // if p2 is already far from p0 then no need to swap
-                }
-                return orientation==Orientation.COUNTER_CLOCKWISE ? -1 : 1; // if angle is clockwise then we need to swap
+    /*
+     * Comparator to sort in counterclockwise order
+     */
+    class PointComparator implements Comparator<Point> {
+
+        Point p0;
+
+        PointComparator(Point p0){
+            this.p0 = p0;
+        }
+
+        @Override
+        public int compare(Point p1, Point p2) {
+            Orientation orientation=getOrientation(p0, p1, p2); // get the orientation of p0-p1-p2
+            if(orientation==Orientation.COLINEAR){ // If two or more points make same angle with p0, keep the farthest point at the end
+                return distSquare(p0,p2) >= distSquare(p0,p1) ? -1 : 1; // if p2 is already far from p0 then no need to swap
             }
-        };
+            return orientation==Orientation.COUNTER_CLOCKWISE ? -1 : 1; // if angle is clockwise then we need to swap
+        }
     }
 
     Orientation getOrientation(Point p1, Point p2, Point p3){
