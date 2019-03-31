@@ -15,6 +15,17 @@ public class BinaryToDecimal {
         return res;
     }
 
+    static int toDecimal2(String bin){
+        int res = 0;
+
+        for (int i=0;i<bin.length();i++){ // traversing from first
+            int val = (bin.charAt(i)-'0'); // get the int value
+            res = 2 * res + val; // same as generating a number by multiplying with 10
+        }
+
+        return res;
+    }
+
     static int convertToDecimal(String bin){
         return Integer.parseInt(bin, 2);
     }
@@ -22,5 +33,8 @@ public class BinaryToDecimal {
     public static void main(String[] args) {
         System.out.println(toDecimal("11010100"));
         System.out.println(convertToDecimal("11010100"));
+
+        System.out.println();
+        System.out.println(toDecimal2("11010100"));
     }
 }
