@@ -70,16 +70,16 @@ public class PatternSearchingTrie {
     }
 
     int countDistinctSubstrings(){
-        return countDistinctSubstringsUtil(root);
+        return countNodes(root);
     }
 
     // similar to count nodes in binary tree
     // this is extended for count nodes in n-ary tree
-    int countDistinctSubstringsUtil(TrieNode current){
+    int countNodes(TrieNode current){
         if(current==null)   return 0;
         int count=0;
         for(Map.Entry<Character,TrieNode> trieNodeEntry : current.child.entrySet()){
-            count += countDistinctSubstringsUtil(trieNodeEntry.getValue());
+            count += countNodes(trieNodeEntry.getValue());
         }
         return 1+count;
     }
