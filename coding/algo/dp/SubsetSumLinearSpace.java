@@ -80,6 +80,7 @@ public class SubsetSumLinearSpace {
 
         int x[]=new int[]{2, 3, 5, 6, 8, 10};
         getAllSubsets(x,x.length,10);
+        System.out.println();
         int y[]=new int[]{1, 2, 3, 4, 5};
         getAllSubsets(y,y.length,10);
 
