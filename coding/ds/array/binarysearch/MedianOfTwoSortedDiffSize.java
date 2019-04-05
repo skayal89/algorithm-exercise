@@ -32,7 +32,7 @@ public class MedianOfTwoSortedDiffSize {
                 low = partitionX + 1;
             }
         }
-        return -1;
+        return -1; // input array is not sorted
     }
 
 
