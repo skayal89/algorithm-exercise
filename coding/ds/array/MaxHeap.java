@@ -90,7 +90,7 @@ public class MaxHeap {
         if(size==0) return Integer.MIN_VALUE;
         int max=a[0];
         a[0]=a[size-1];
-        a[size-1]=max;
+        size--;
         buildHeap(0);
         return max;
     }
@@ -119,6 +119,8 @@ public class MaxHeap {
         System.out.println(heap.contains(15));
         heap.add(22);
         heap.decreaseKey(9,90);
+        heap.printHeap();
+        System.out.println(heap.extractMax());
         heap.printHeap();
     }
 }
