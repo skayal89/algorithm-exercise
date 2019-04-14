@@ -16,7 +16,23 @@ public class IterativeInorderPostorder {
             }
             while (!s.empty() && curr==null){
                 TreeNode temp = s.pop();
-                System.out.println(temp.data+" ");
+                System.out.print(temp.data+" ");
+                curr=temp.right;
+            }
+        }
+    }
+
+    static void inorder2(TreeNode t){
+        Stack<TreeNode> s=new Stack<TreeNode>();
+        TreeNode curr=t;
+        while (curr!=null || !s.empty()){
+            if (curr!=null){
+                s.push(curr);
+                curr=curr.left;
+            }
+            else{
+                TreeNode temp = s.pop();
+                System.out.print(temp.data+" ");
                 curr=temp.right;
             }
         }
@@ -54,7 +70,8 @@ public class IterativeInorderPostorder {
         t.left.right.left=new TreeNode(17);
         t.right.left=new TreeNode(8);
         t.right.right=new TreeNode(13);
-        //inorder2(t);
+        inorder2(t);
+        System.out.println();
         inorder(t);
         //postOrder(t);
     }
