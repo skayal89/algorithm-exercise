@@ -29,17 +29,17 @@ public class DjkstraSingleSourceShortestPath {
         }
     }
 
-    void djkstra(int adj[][], int source, int V){
+    void djkstra(Graph g, int source){
         // we should use minHeap with Map implementation
         PriorityQueue<Node> minHeap=new PriorityQueue<Node>((n1, n2)->n1.dist-n2.dist);
         minHeap.add(new Node(source,0));
-        for (int i=0;i<V;i++){
+        for (int i=0;i<g.V;i++){
             if(i!=source){
                 minHeap.add(new Node(i, Integer.MAX_VALUE));
             }
         }
-        int parent[]=new int[V];
-        int distance[]=new int[V];
+        int parent[]=new int[g.V];
+        int distance[]=new int[g.V];
 
         Arrays.fill(parent,-1);
         Arrays.fill(distance, Integer.MAX_VALUE);
@@ -49,10 +49,10 @@ public class DjkstraSingleSourceShortestPath {
             System.out.println(minHeap);
             Node temp=minHeap.poll();
             int u=temp.vertex;
-            for (int v = 0; v < V; v++) {
+            for (int v = 0; v < g.V; v++) {
                 // If vertex is not present in heap, that means it has already been considered in shortestPathSet
-                if(adj[u][v]!=0 && minHeap.contains(new Node(v)) && (distance[v]==Integer.MAX_VALUE || distance[v]>distance[u]+adj[u][v])){
-                    distance[v]=distance[u]+adj[u][v];
+                if(g.adj[u][v]!=0 && minHeap.contains(new Node(v)) && (distance[v]==Integer.MAX_VALUE || distance[v]>distance[u]+g.adj[u][v])){
+                    distance[v]=distance[u]+g.adj[u][v];
                     // in place of decreaseKey operation
                     minHeap.remove(new Node(v));
                     minHeap.add(new Node(v, distance[v]));
@@ -66,7 +66,7 @@ public class DjkstraSingleSourceShortestPath {
     }
 
     public static void main(String[] args) {
-        int graph[][] = new int[][]{
+        int adj[][] = new int[][]{
                 {0, 4, 0, 0, 0, 0, 0, 8, 0},
                 {4, 0, 8, 0, 0, 0, 0, 11, 0},
                 {0, 8, 0, 7, 0, 4, 0, 0, 2},
@@ -77,9 +77,9 @@ public class DjkstraSingleSourceShortestPath {
                 {8, 11, 0, 0, 0, 0, 1, 0, 7},
                 {0, 0, 2, 0, 0, 0, 6, 7, 0}
         };
-
+        Graph graph = new Graph(9, adj);
         DjkstraSingleSourceShortestPath d=new DjkstraSingleSourceShortestPath();
-        d.djkstra(graph,0, 9);
+        d.djkstra(graph,0);
     }
 
 }
