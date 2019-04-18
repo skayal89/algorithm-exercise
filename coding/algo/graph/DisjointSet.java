@@ -26,7 +26,7 @@ public class DisjointSet {
     }
 
     int find(int i){
-        return map.get(i).data;
+        return find(map.get(i)).data;
     }
 
     Node find(Node t){

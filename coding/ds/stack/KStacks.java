@@ -21,7 +21,7 @@ public class KStacks {
         nextAvailable=0;
 
         for (int i = 0; i < size; i++) {
-            nextIndex[i]=i==size-1 ? -1 :i+1;
+            nextIndex[i] = (i == size-1 ? -1 : i+1);
         }
         for (int i = 0; i < noOfStacks; i++) {
             tops[i]=-1;
