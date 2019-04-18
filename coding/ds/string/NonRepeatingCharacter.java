@@ -58,6 +58,5 @@ public class NonRepeatingCharacter {
         String s="geeksforgeeks";
         System.out.println(firstNonRepeatingChar(s));
         System.out.println(kthNonRepeatingChar(s,3));
-        System.out.println(lengthOfLongestSubstringWithUniqueChar("geeksforgeeks"));
     }
 }
