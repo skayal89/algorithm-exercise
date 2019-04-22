@@ -14,7 +14,7 @@ public class NQueee {
 
     public void nqueen(int n){
         /*
-        position[i] is the position of ith queen
+         * position[i] is the position of ith queen
          */
         Position position[]=new Position[n];
         if(nQueenUtil(position,n,0)){
