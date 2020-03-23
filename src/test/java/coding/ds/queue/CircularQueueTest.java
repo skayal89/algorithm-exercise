@@ -67,4 +67,15 @@ public class CircularQueueTest {
         assertEquals(5,circularQueue.peek().intValue());
     }
 
+    public void size(){
+        assertEquals(0,circularQueue.size());
+        circularQueue.add(1);
+        circularQueue.add(2);
+        assertEquals(2,circularQueue.size());
+        circularQueue.remove();
+        circularQueue.remove();
+        assertEquals(0,circularQueue.size());
+
+    }
+
 }
