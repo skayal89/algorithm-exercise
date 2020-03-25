@@ -31,7 +31,7 @@ public class CircularQueue<T> {
         if(front == -1) front = 0;
     }
 
-    public T remove(){
+    public T poll(){
         if(isEmpty())   throw new IndexOutOfBoundsException("Queue is empty");
         T element = queue[front];
         front = (front +1)%capacity;

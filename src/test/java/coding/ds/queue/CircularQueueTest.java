@@ -31,7 +31,7 @@ public class CircularQueueTest {
         circularQueue.add(2);
         circularQueue.add(3);
         assertTrue(circularQueue.isFull());
-        circularQueue.remove();
+        circularQueue.poll();
         assertFalse(circularQueue.isFull());
     }
 
@@ -54,15 +54,15 @@ public class CircularQueueTest {
     }
 
     @Test
-    public void remove() {
+    public void poll() {
         circularQueue.add(1);
         circularQueue.add(2);
         assertEquals(2,circularQueue.peek().intValue());
-        assertEquals(1, circularQueue.remove().intValue());
+        assertEquals(1, circularQueue.poll().intValue());
         assertEquals(2,circularQueue.peek().intValue());
         circularQueue.add(3);
         circularQueue.add(4);
-        assertEquals(2, circularQueue.remove().intValue());
+        assertEquals(2, circularQueue.poll().intValue());
         circularQueue.add(5);
         assertEquals(5,circularQueue.peek().intValue());
     }
@@ -72,8 +72,8 @@ public class CircularQueueTest {
         circularQueue.add(1);
         circularQueue.add(2);
         assertEquals(2,circularQueue.size());
-        circularQueue.remove();
-        circularQueue.remove();
+        circularQueue.poll();
+        circularQueue.poll();
         assertEquals(0,circularQueue.size());
 
     }
