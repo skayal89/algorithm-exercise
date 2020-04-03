@@ -48,6 +48,11 @@ public class PriorityQueue<T> {
         return size <= 0;
     }
 
+    public T peek(){
+        if(isEmpty())   return null;
+        return heap[0];
+    }
+
     public void printHeap(){
         for(int i=0;i<size;i++){
             System.out.print(heap[i]+" ");
