@@ -7,22 +7,30 @@ public class KLargestElement {
 
     public int[] kLargestElements(int[] a, int k){
         MinHeap minHeap = new MinHeap(k);
-        for(int i : a){
-            minHeap.add(i);
-        }
-        int res[] = new int[k];
-        for(int i = k-1; i>=0 && !minHeap.isEmpty();i--){
-            res[i] = minHeap.poll();
-        }
-        return res;
+        addToHeap(minHeap, a);
+        return extractKElements(minHeap, k);
     }
 
     public static void main(String[] args) {
         KLargestElement kLargestElement = new KLargestElement();
-        int a[]=new int[]{16,3,9,17,1,2,15,10};
-        System.out.println(Arrays.toString(kLargestElement.kLargestElements(a,3)));
-        System.out.println(Arrays.toString(kLargestElement.kLargestElements(a,2)));
-        System.out.println(Arrays.toString(kLargestElement.kLargestElements(a,5)));
+        int a[] = new int[]{16, 3, 9, 17, 1, 2, 15, 10};
+        System.out.println(Arrays.toString(kLargestElement.kLargestElements(a, 3)));
+        System.out.println(Arrays.toString(kLargestElement.kLargestElements(a, 2)));
+        System.out.println(Arrays.toString(kLargestElement.kLargestElements(a, 5)));
+    }
+
+    private void addToHeap(MinHeap minHeap, int[] a) {
+        for(int i : a){
+            minHeap.add(i);
+        }
+    }
+
+    private int[] extractKElements(MinHeap minHeap, int k) {
+        int res[] = new int[k];
+        for(int i = k-1; i>=0 && !minHeap.isEmpty(); i--){
+            res[i] = minHeap.poll();
+        }
+        return res;
     }
 
     class MinHeap {
