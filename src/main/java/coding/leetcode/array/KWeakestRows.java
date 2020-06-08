@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 // https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/
-// few test cases failing
+// some test cases are failing on leetcode.
 class KWeakestRows {
     private int[] kWeakestRows(int[][] mat, int k) {
         Entry[] ranks = buildRanks(mat);
